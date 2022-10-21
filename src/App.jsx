@@ -6,8 +6,8 @@ import Characters from './components/Characters';
 function App() {
 
   const [characters, setCharacters] = useState(null);
-  const baseUrl = "https://rickandmortyapi.com/api/character?page=";
   const [totalPages, setTotalPages] = useState(0);
+  const baseUrl = "https://rickandmortyapi.com/api/character";
 
   const reqApi = async (url) => {
     // Realizando una petición a la API de Rick and Morty
@@ -33,7 +33,7 @@ function App() {
       {
         arreglo.map((item) => (
           <>
-          <a href='#' onClick={() => reqApi(baseUrl+item)} key={item}>{item}</a>&nbsp;
+          <a href='#' onClick={() => reqApi(baseUrl+"?page="+item)} key={item}>{item}</a>&nbsp;
           </>
         ))
       }
@@ -65,7 +65,7 @@ function App() {
             <>
             <img src={imagenRickMorty} alt="Rick & Morty" className='img-home' />
             <br />
-            <button onClick={() => reqApi(baseUrl+"1")} className="btn-search" >Buscar Personajes</button>
+            <button onClick={() => reqApi(baseUrl+"?page=1")} className="btn-search" >Buscar Personajes</button>
             </>
           )
         }
